@@ -2,6 +2,9 @@
   "name": "widget-order-client",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=20.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -9,9 +12,11 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "jotai": "^2.6.2",
     "next": "14.1.0",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "react-hook-form": "^7.49.3"
   },
   "devDependencies": {
     "@types/node": "^20",
