@@ -9,8 +9,12 @@ const defaultFormValue: WidgetSearchFormValue = {
   searchTerm: ""
 };
 
-export default function WidgetSearchForm() {
-  
+type WidgetSearchFormParams = {
+  onSearch: (terms: string) => void
+};
+
+export default function 
+WidgetSearchForm({ onSearch }: WidgetSearchFormParams) {
   const [formValue, setFormValue] = useState<WidgetSearchFormValue>(defaultFormValue);
 
   const {
@@ -22,26 +26,32 @@ export default function WidgetSearchForm() {
     defaultValues: defaultFormValue
   });
 
-  const processForm: SubmitHandler<WidgetSearchFormValue> = data => setFormValue(data);
+  const processForm: SubmitHandler<WidgetSearchFormValue> = data => {
+    setFormValue(data);
+  }
 
   return (
     <>
       <form onSubmit={handleSubmit(processForm)}>
-        <div className="self-center">
+        <div
+        >
           <input
             type="text"
-            className="border-solid border-zinc-800"
             placeholder="Search for a widget"
             {...register("searchTerm", {
               required: "Please enter a search term"
             })}
           />
           {errors.searchTerm?.message && (
-            <p className="text-sm text-red-400">{errors.searchTerm.message}</p>
+            <p className="text-sm text-red-400">
+              {errors.searchTerm.message}
+            </p>
           )}
         </div>
 
-        <button type="submit" className="rounded-lg bg-gray-300 py-2">
+        <button
+          type="submit"
+        >
           Search
         </button>
       </form>
